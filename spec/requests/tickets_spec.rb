@@ -10,7 +10,6 @@ RSpec.describe "Tickets", type: :request do
     )
   end
 
-
   describe "GET /tickets" do
     it "returns HTTP success and lists tickets" do
       get tickets_path
