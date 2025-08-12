@@ -1,14 +1,13 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[ show edit update destroy ]
 
-  # GET /tickets or /tickets.json
+  # GET /tickets
   def index
     @tickets = Ticket.all
   end
 
-  # GET /tickets/1 or /tickets/1.json
-  def show
-  end
+  # GET /tickets/1
+  def show; end
 
   # GET /tickets/new
   def new
@@ -16,10 +15,9 @@ class TicketsController < ApplicationController
   end
 
   # GET /tickets/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /tickets or /tickets.json
+  # POST /tickets
   def create
     @ticket = Ticket.new(ticket_params)
 
@@ -28,26 +26,26 @@ class TicketsController < ApplicationController
         format.html { redirect_to @ticket, notice: "Ticket was successfully created." }
         format.json { render :show, status: :created, location: @ticket }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @ticket.errors, status: :unprocessable_content }
       end
     end
   end
 
-  # PATCH/PUT /tickets/1 or /tickets/1.json
+  # PATCH/PUT /tickets/1
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
         format.html { redirect_to @ticket, notice: "Ticket was successfully updated." }
         format.json { render :show, status: :ok, location: @ticket }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @ticket.errors, status: :unprocessable_content }
       end
     end
   end
 
-  # DELETE /tickets/1 or /tickets/1.json
+  # DELETE /tickets/1
   def destroy
     @ticket.destroy!
 
@@ -58,13 +56,12 @@ class TicketsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
-      @ticket = Ticket.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def ticket_params
-      params.expect(ticket: [ :title, :description, :status ])
-    end
+  def set_ticket
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def ticket_params
+    params.require(:ticket).permit(:title, :description, :status)
+  end
 end
