@@ -43,5 +43,5 @@ end
 
 group :production do
   # DB adapter for production (Heroku/servers)
-  gem "pg", "~> 1.5"
+  gem "pg", "~> 1.6"
 end
