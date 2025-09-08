@@ -1,24 +1,9 @@
-# README
+# Ticket App (Rails 8)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CI](https://github.com/jhansen7325/ticket_app/actions/workflows/ci.yml/badge.svg)](https://github.com/jhansen7325/ticket_app/actions/workflows/ci.yml)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A minimal Rails 8 Support Ticket CRUD app with RSpec tests and CI.
+  
+- **Live demo:** https://ticket-app-112a43998e86.herokuapp.com/
+- **Tech:** Rails 8, SQLite (dev/test), Postgres (prod), RSpec, GitHub Actions
+- **Endpoints:** `/tickets` (CRUD)
