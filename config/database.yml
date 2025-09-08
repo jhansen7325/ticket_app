@@ -15,6 +15,23 @@ test:
   database: db/test.sqlite3
   timeout: 5000
 
+# In production, use ONE Postgres database for all roles.
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  primary:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+
+  cache:
+    <<: *default
+    url: <%= ENV["CACHE_DATABASE_URL"] || ENV["DATABASE_URL"] %>
+    migrations_paths: db/cache_migrate
+
+  queue:
+    <<: *default
+    url: <%= ENV["QUEUE_DATABASE_URL"] || ENV["DATABASE_URL"] %>
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *default
+    url: <%= ENV["CABLE_DATABASE_URL"] || ENV["DATABASE_URL"] %>
+    migrations_paths: db/cable_migrate
