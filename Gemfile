@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.2.9"
 
-gem "rails", "~> 8.0.2"
+gem "rails", "~> 8.1.1"
 gem "propshaft"
 # moved sqlite3 out of global and into :development, :test group
 # gem "sqlite3", ">= 2.1"
